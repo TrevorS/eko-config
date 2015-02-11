@@ -2,9 +2,9 @@ module EkoConfig
   class Section
     extend Forwardable
 
-    @@indented = /^\s+[\w\s]+/
-
     def_delegators :@settings, :[], :[]=
+
+    @@indented = /^\s+[\w\s]+/
 
     def initialize
       @settings = {}
