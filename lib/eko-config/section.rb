@@ -2,22 +2,12 @@ module EkoConfig
   class Section
     extend Forwardable
 
+    attr_reader :name, :settings
     def_delegators :@settings, :[], :[]=
 
-    @@indented = /^\s+[\w\s]+/
-
-    def initialize
+    def initialize(name)
+      @name     = name
       @settings = {}
-    end
-
-    def add_setting(line)
-      if @@indented =~ line
-        @settings[@last_key] << ' ' << line.strip
-      else
-        key, value = line.split(":").map(&:strip)
-        @settings[key] = value
-        @last_key = key
-      end
     end
   end
 end
