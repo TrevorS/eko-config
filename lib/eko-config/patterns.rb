@@ -8,7 +8,7 @@ module EkoConfig
       /^\s+[\w\s]+/
     end
 
-    def self.setting
+    def self.settings
       /.+:.+/
     end
   end

@@ -27,7 +27,7 @@ module EkoConfig
     ::File.open(file, 'r').each_with_object({}) do |line, sections|
       if name = Patterns.name =~ line && $1
         sections[name] = current_section = Section.new(name)
-      elsif Patterns.setting =~ line
+      elsif Patterns.settings =~ line
         key, value = line.split(':').map(&:strip)
         current_section[key] = value
         last_key = key
