@@ -20,12 +20,18 @@ Or install it yourself as:
 
 ## Usage
 
-TODO: Write usage instructions here
+```ruby
+# load file
+path = Pathname.new('settings').join('config.ini')
+file = EkoConfig.parse(path)
 
-## Contributing
+# accessor
+file['header']['project'] # "Programming Test"
 
-1. Fork it ( https://github.com/TrevorS/eko-config/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create a new Pull Request
+# mutator
+file['section']['pretty'] = 'awesome'
+
+# write file
+new_path = Pathname.new('settings').join('new.ini')
+EkoConfig.write(file, new_path)
+```
